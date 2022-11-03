@@ -24,9 +24,10 @@ class ImgGenerator:
         else:
             self.char_map = char_map
 
+
         # Model
         print(f'Model: {config.architecture}')
-        model_type = import_module('models.' + self.config.architecture)
+        model_type = import_module('models.ScrabbleGAN')
         create_model = getattr(model_type, 'create_model')
         self.model = create_model(self.config, self.char_map)
         # print(self.model, end='\n\n')

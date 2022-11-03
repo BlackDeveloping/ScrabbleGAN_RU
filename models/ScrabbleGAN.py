@@ -80,6 +80,11 @@ class ScrabbleGAN(nn.Module):
             # filter words with len >= 20
             self.fake_words = self.fake_words.loc[self.fake_words.words.str.len() < 20]
             self.fake_words = self.fake_words.words.to_list()
+        elif cfg.dataset == 'RU':
+            self.fake_words = pd.read_csv(cfg.lexicon_file, sep='\t', names=['words'])
+            # filter words with len >= 20
+            self.fake_words = self.fake_words.loc[self.fake_words.words.str.len() < 20]
+            self.fake_words = self.fake_words.words.to_list()
         else:
             exception_chars = ['ï', 'ü', '.', '_', 'ö', ',', 'ã', 'ñ']
             self.fake_words = pd.read_csv(cfg.lexicon_file, '\t')['lemme']
@@ -99,15 +104,16 @@ class ScrabbleGAN(nn.Module):
         self.batch_size = cfg.batch_size
         self.num_chars = cfg.num_chars
         self.word_map = WordMap(char_map)
-
-        self.batch_size = cfg.batch_size
-        self.num_chars = cfg.num_chars
         self.config = cfg
 
         self.R = Recognizer(cfg)
+        # print(self.R)
         self.G = BGAN.Generator(resolution=cfg.resolution, G_shared=cfg.g_shared,
                                 bn_linear=cfg.bn_linear, n_classes=cfg.num_chars, hier=True)
+        
+        # print(self.G)
         self.D = BGAN.Discriminator(resolution=cfg.resolution, bn_linear=cfg.bn_linear, n_classes=cfg.num_chars)
+        # print(self.D)
 
     def forward_fake(self, z=None, fake_y=None, b_size=None):
         b_size = self.batch_size if b_size is None else b_size
