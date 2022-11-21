@@ -14,7 +14,7 @@ from data_loader.data_generator import DataLoader
 from utils.data_utils import *
 from utils.training_utils import ModelCheckpoint
 from losses_and_metrics import loss_functions, metrics
-from config import Config
+from scgan.config import Config
 
 seed = 0
 torch.manual_seed(seed)

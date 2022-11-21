@@ -159,7 +159,7 @@ def read_data(config):
 
 
 if __name__ == '__main__':
-    from config import Config
+    from scgan.config import Config
     config = Config
     print('Processing Data:\n')
     read_data(config)

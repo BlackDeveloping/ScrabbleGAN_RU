@@ -3,7 +3,7 @@ import pickle as pkl
 
 from utils.data_utils import *
 from utils.training_utils import ModelCheckpoint
-from config import Config
+from scgan.config import Config
 import argparse
 import matplotlib.pyplot as plt
 

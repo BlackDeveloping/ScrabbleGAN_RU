@@ -1,9 +1,9 @@
-from config import Config
+from scgan.config import Config
 import argparse
 import os
 import numpy as np
 from data_loader.data_generator import CustomDataset
-from generate_images import ImgGenerator
+from scgan.generate_images import ImgGenerator
 from tqdm import tqdm
 from PIL import Image
 import cv2
