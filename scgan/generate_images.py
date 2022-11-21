@@ -1,8 +1,8 @@
 from importlib import import_module
 import pickle as pkl
 
-from utils.data_utils import *
-from utils.training_utils import ModelCheckpoint
+from scgan.utils.data_utils import *
+from scgan.utils.training_utils import ModelCheckpoint
 from scgan.config import Config
 import argparse
 import matplotlib.pyplot as plt
