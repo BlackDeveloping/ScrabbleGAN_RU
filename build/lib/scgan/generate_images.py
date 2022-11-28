@@ -60,7 +60,7 @@ class ImgGenerator:
 
         return self.model.fake_img.squeeze(1).cpu().numpy(), self.model.fake_y.cpu().numpy(), word_labels_decoded
 
-class ImgGeneratorSber:
+class ImgGenerator_2:
     def __init__(self, checkpt_path, config, char_map_path, shrink_ratio=0.5,
         lexicon_paths=None, return_rgb=False):
         """
